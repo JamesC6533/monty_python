@@ -4,6 +4,8 @@ from flask import url_for
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'random-nonsense'
+app = Flask(__name__, static_folder='static')
+
 
 
 def connection():

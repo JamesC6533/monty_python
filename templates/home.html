@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bucket List Website </title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;600;700&display=swap" rel="stylesheet">
@@ -14,11 +15,11 @@
 <body>
 <section class="header">
     <nav>
-        <a href="webstruct.html"><img src="websiteimages/logo-PhotoRoom.png"> </a>
+        <a href="home.html"><img src="images/logo-PhotoRoom.png"> </a>
         <div class="nav-links" id="navLinks">
             <i class="fa fa-times" onclick="hideMenu()"></i>
             <ul>
-                <li><a id="home-link" href="webstruct.html">Home</a></li>
+                <li><a id="home-link" href="home.html">Home</a></li>
                 <li><a id="lists-link" href="lists.html">Lists</a></li>
                 <li><a id="destinations-link" href="destinations.html">Destinations</a></li>
                 <li><a id="activities-link" href="activities.html">Activities</a></li>
@@ -91,18 +92,18 @@
 
     <div class="row">
         <div class="campus-col">
-            <img src="websiteimages/next-sec.jpg">
+            <img src="images/next-sec.jpg">
             <div class="layer">
                 <h3>Thrill seekers</h3>
             </div>
         </div>
         <div class="campus-col">
-            <img src="websiteimages/explorers2.jpg">
+            <img src="images/explorers2.jpg">
             <div class="layer">
                 <h3>Explorers</h3>
             </div>
         </div> <div class="campus-col">
-            <img src="websiteimages/foodies3.jpeg">
+            <img src="images/foodies3.jpeg">
             <div class="layer">
                 <h3>Foodies</h3>
             </div>
@@ -122,21 +123,21 @@
 
     <div class="row">
         <div class="facilities-col">
-            <img src="websiteimages/hiking.jpg">
+            <img src="images/hiking.jpg">
             <h3>Hikes and Trails</h3>
             <p>More and more and more and more example text, if you don't want to put anything meanungful into a paragraph 
                 just waffle abosolute nonsense to fill the space. 
             </p>
         </div>
         <div class="facilities-col">
-            <img src="websiteimages/destination1.jpg">
+            <img src="images/destination1.jpg">
             <h3>Locations</h3>
             <p>More and more and more and more example text, if you don't want to put anything meanungful into a paragraph 
                 just waffle abosolute nonsense to fill the space. 
             </p>
         </div>
         <div class="facilities-col">
-            <img src="websiteimages/diving.jpg">
+            <img src="images/diving.jpg">
             <h3>Activities</h3>
             <p>More and more and more and more example text, if you don't want to put anything meanungful into a paragraph 
                 just waffle abosolute nonsense to fill the space. 
@@ -155,7 +156,7 @@
 
     <div class="row">
         <div class="testimonial-col">
-            <img src="websiteimages/user4.jpg">
+            <img src="images/user4.jpg">
             <div>
                 <p>More and more and more and more example text, if you don't want to put anything meanungful into a paragraph 
                 just waffle abosolute nonsense to fill the space.</p>
@@ -168,7 +169,7 @@
             </div>
         </div>   
         <div class="testimonial-col">
-            <img src="websiteimages/user3.jpg">
+            <img src="images/user3.jpg">
             <div>
                 <p>More and more and more and more example text, if you don't want to put anything meanungful into a paragraph 
                 just waffle abosolute nonsense to fill the space.</p>
