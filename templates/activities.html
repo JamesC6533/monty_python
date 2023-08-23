@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bucket List Website </title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;600;700&display=swap" rel="stylesheet">
@@ -14,15 +15,15 @@
 <body>
 <section class="sub-header3">
     <nav>
-        <a href="home.html"><img src="images/logo-PhotoRoom.png"> </a>
+        <a href="home.html"><img src="static/images/logo-PhotoRoom.png"> </a>
         <div class="nav-links" id="navLinks">
             <i class="fa fa-times" onclick="hideMenu()"></i>
             <ul>
-                <li><a id="home-link" href="home.html">Home</a></li>
-                <li><a id="lists-link" href="lists.html">Lists</a></li>
-                <li><a id="destinations-link" href="destinations.html">Destinations</a></li>
-                <li><a id="activities-link" href="activities.html">Activities</a></li>
-                <li><a id="signinup-link" href="signup.html">Sign in/Sign up</a></li>
+                <li><a id="home-link" href="/home">Home</a></li>
+                <li><a id="lists-link" href="/lists">Lists</a></li>
+                <li><a id="destinations-link" href="/destinations">Destinations</a></li>
+                <li><a id="activities-link" href="/activities">Activities</a></li>
+                <li><a id="signinup-link" href="/signup">Sign in/Sign up</a></li>
             </ul>
         </div>
         <i class="fa fa-bars" onclick="showMenu()"></i>
@@ -48,21 +49,21 @@
 
     <div class="row">
         <div class="facilities-col">
-            <img src="images/banner15.jpeg">
+            <img src="static/images/banner15.jpeg">
             <h3>Wonders of the world</h3>
             <p>More and more and more and more example text, if you don't want to put anything meanungful into a paragraph 
                 just waffle abosolute nonsense to fill the space. 
             </p>
         </div>
         <div class="facilities-col">
-            <img src="images/skydiving.jpg">
+            <img src="static/images/skydiving.jpg">
             <h3>Sky Diving destinations</h3>
             <p>More and more and more and more example text, if you don't want to put anything meanungful into a paragraph 
                 just waffle abosolute nonsense to fill the space. 
             </p>
         </div>
         <div class="facilities-col">
-            <img src="images/canoe.jpeg">
+            <img src="static/images/canoe.jpeg">
             <h3>Canoe and Kayaking destinations</h3>
             <p>More and more and more and more example text, if you don't want to put anything meanungful into a paragraph 
                 just waffle abosolute nonsense to fill the space. 
@@ -72,21 +73,21 @@
 
     <div class="row">
         <div class="facilities-col">
-            <img src="images/destination5.jpeg">
+            <img src="static/images/destination5.jpeg">
             <h3>Natural Wonders</h3>
             <p>More and more and more and more example text, if you don't want to put anything meanungful into a paragraph 
                 just waffle abosolute nonsense to fill the space. 
             </p>
         </div>
         <div class="facilities-col">
-            <img src="images/events.jpeg">
+            <img src="static/images/events.jpeg">
             <h3>Events & Festivals</h3>
             <p>More and more and more and more example text, if you don't want to put anything meanungful into a paragraph 
                 just waffle abosolute nonsense to fill the space. 
             </p>
         </div>
         <div class="facilities-col">
-            <img src="images/paddlebaord.jpeg">
+            <img src="static/images/paddlebaord.jpeg">
             <h3>Paddle Boarding Locations</h3>
             <p>More and more and more and more example text, if you don't want to put anything meanungful into a paragraph 
                 just waffle abosolute nonsense to fill the space. 
@@ -96,21 +97,21 @@
 
     <div class="row">
         <div class="facilities-col">
-            <img src="images/killaman.jpeg">
+            <img src="static/images/killaman.jpeg">
             <h3>Hiking Locations</h3>
             <p>More and more and more and more example text, if you don't want to put anything meanungful into a paragraph 
                 just waffle abosolute nonsense to fill the space. 
             </p>
         </div>
         <div class="facilities-col">
-            <img src="images/banner6.jpg">
+            <img src="static/images/banner6.jpg">
             <h3>Snorkelling destinations</h3>
             <p>More and more and more and more example text, if you don't want to put anything meanungful into a paragraph 
                 just waffle abosolute nonsense to fill the space. 
             </p>
         </div>
         <div class="facilities-col">
-            <img src="images/michelin.webp">
+            <img src="static/images/michelin.webp">
             <h3>Michelin Star Restaurants </h3>
             <p>More and more and more and more example text, if you don't want to put anything meanungful into a paragraph 
                 just waffle abosolute nonsense to fill the space. 
@@ -120,21 +121,21 @@
 
     <div class="row">
         <div class="facilities-col">
-            <img src="images/scubadiv.webp">
+            <img src="static/images/scubadiv.webp">
             <h3>Scuba Diving Locations</h3>
             <p>More and more and more and more example text, if you don't want to put anything meanungful into a paragraph 
                 just waffle abosolute nonsense to fill the space. 
             </p>
         </div>
         <div class="facilities-col">
-            <img src="images/rockcli.jpeg">
+            <img src="static/images/rockcli.jpeg">
             <h3>Rock Climbing</h3>
             <p>More and more and more and more example text, if you don't want to put anything meanungful into a paragraph 
                 just waffle abosolute nonsense to fill the space. 
             </p>
         </div>
         <div class="facilities-col">
-            <img src="images/jumping.jpg">
+            <img src="static/images/jumping.jpg">
             <h3>Bungee Jumping Locations</h3>
             <p>More and more and more and more example text, if you don't want to put anything meanungful into a paragraph 
                 just waffle abosolute nonsense to fill the space. 
@@ -144,21 +145,21 @@
 
     <div class="row">
         <div class="facilities-col">
-            <img src="images/destination9.jpeg">
+            <img src="static/images/destination9.jpeg">
             <h3>Safari Locations</h3>
             <p>More and more and more and more example text, if you don't want to put anything meanungful into a paragraph 
                 just waffle abosolute nonsense to fill the space. 
             </p>
         </div>
         <div class="facilities-col">
-            <img src="images/skiiii.jpeg">
+            <img src="static/images/skiiii.jpeg">
             <h3>Skiing and Snowboarding destinations</h3>
             <p>More and more and more and more example text, if you don't want to put anything meanungful into a paragraph 
                 just waffle abosolute nonsense to fill the space. 
             </p>
         </div>
         <div class="facilities-col">
-            <img src="images/caves.jpeg">
+            <img src="static/images/caves.jpeg">
             <h3>Caves and Caving Locations</h3>
             <p>More and more and more and more example text, if you don't want to put anything meanungful into a paragraph 
                 just waffle abosolute nonsense to fill the space. 

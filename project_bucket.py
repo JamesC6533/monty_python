@@ -1,11 +1,8 @@
-from flask import *
+from flask import Flask, render_template, request
 import pymysql
-from flask import url_for
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'random-nonsense'
-app = Flask(__name__, static_folder='static')
-
 
 
 def connection():
@@ -18,38 +15,34 @@ def connection():
     return conn
 
 
-@app.route('/sign_up',methods=['GET','POST'])
+@app.route('/')
+@app.route('/home')
+def home():
+    return render_template("home.html")
+
+@app.route('/signup', methods=['GET', 'POST'])
 def sign_up():
     if request.method == 'POST':
-        username = request.form ["username"]
-        password = request.form ["password"]
-        email = request.form ["email"]
-        
+        username = request.form["username"]
+        password = request.form["password"]
+        email = request.form["email"]
+
         conn = connection()
-        cursor = conn.cursor()
-        cursor.execute("insert into customers(full_name, email, password)values('"+username+"','"+email+"', '"+password+"') ")
-        return "You've succefully signed up!"
-    
+        conn.close()
+
     return render_template("signup.html")
 
+@app.route('/activities')
+def activities():
+    return render_template("activities.html")
 
+@app.route('/destinations')
+def destinations():
+    return render_template("destinations.html")
 
-
-@app.route('/customers')
-def main():
-    customers = []
-    conn = connection()
-    cursor = conn.cursor()
-    cursor.execute("select * from customer")
-    for row in cursor.fetchall():
-        customers.append({"customer_id": row[0], "first_name": row[2], "last_name": row[3], "email": row[4]})
-    conn.close()
-    return render_template('customer.html', customers=customers)
-
-
-
-
-
+@app.route('/lists')
+def lists():
+    return render_template("lists.html")
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
