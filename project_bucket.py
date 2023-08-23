@@ -38,7 +38,8 @@ def activities():
 
 @app.route('/destinations')
 def destinations():
-    return render_template("destinations.html")
+    destination_url = "https://www.theblondeabroad.com/ultimate-venice-travel-guide/"
+    return render_template("destinations.html", destination_url=destination_url)
 
 @app.route('/lists')
 def lists():
