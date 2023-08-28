@@ -46,34 +46,69 @@
 <!-- lists section -->
 <section class="course">
     <h1>Create and customise bucket lists </h1>
-    <p>Example text for advanture page,More and more and more and more example text, if you don't want to put anything meanungful into a paragraph 
-        just waffle abosolute nonsense to fill the space,More and more and more and more example text, if you don't want to put anything meanungful into a paragraph 
-        just waffle abosolute nonsense to fill the space. </p>
+    <p>Within this platform, you're empowered to craft your very own lists.
+       Should you find yourself seeking inspiration, consider giving our Random Bucket Spinner
+        a whirl it's designed to spark your creativity and infuse your lists with fresh ideas. </p>
 
     <div class="row">
         <div class="course-col">
             <h3>Create personal lists</h3>
-            <p>More and more and more and more example text, if you don't want to put anything meanungful into a paragraph 
-                just waffle abosolute nonsense to fill the space. 
+            <p>Empower your aspirations and shape the story of your life by crafting 
+               a personal bucket list, a roadmap to turn dreams into reality.
             </p>
 
         </div>
         <div class="course-col">
             <h3>Update progress</h3>
-            <p>More and more and more and more example text, if you don't want to put anything meanungful into a paragraph 
-                just waffle abosolute nonsense to fill the space. 
+            <p>Continuously enrich your journey by updating and  tracking your personal bucket list,
+               ensuring that each step forward is a deliberate stride toward embracing life's extraordinary opportunities.
             </p>
 
         </div>
         <div class="course-col">
             <h3>Get inspired</h3>
             <p>
+                Let the boundless tapestry of possibilities inspire you. As you create a personal bucket list
+                that serves as a vivid reminder to embrace novelty, seize every chance, and infuse your 
+                life with the thrill of newfound experiences.
             </p>
 
         </div>
     </div>
 
 </section>
+
+<section class="bucket-l">
+
+
+    <body>
+        <h1>My Bucket List</h1>
+        <div class="spinner3">
+            <form method="POST">
+                <ul class="bucketList3">
+                    {% for item in items %}
+                        <li class="list-item3"><input type="text" name="item" value="{{ item }}" readonly></li>
+                    {% endfor %}
+                    <li class="list-item3"><input type="text" name="new_item" placeholder="Add a new item"></li>
+                </ul>
+                <input id="spinButton3" type="submit" value="Submit">
+            </form>
+    
+            <div class="result-container3">
+                <ul class="bucketList3">
+                    {% for item in items %}
+                        <li class="list-item3">{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </body>
+
+</section>
+<br>
+<br>
+<br>
+<br>
 
 <!-- list page contents -->
 
@@ -90,16 +125,17 @@
             const bucketListItems = [
                 "Visit Machu Picchu",
                 "Go skydiving",
-                "Learn to play a musical instrument",
-                "Swim with dolphins",
-                "Write a book",
-                "Learn a new language",
-                "Run a marathon",
-                "Plant a tree",
-                "Volunteer abroad",
+                "Learn to cook an exotic meal",
+                "Swim with turtles",
+                "Start a blog about your bucket list adventues",
+                "Visit Japan in Sakura season",
+                "Rent a bike in Amsterdam",
+                "See the BIG FIVE on Safari",
+                "Experience a Gondola ride in Venice",
                 "Go on a hot air balloon ride",
                 "Scuba dive at the Great Barrior Reef ",
-                "Vist the Great Wall of China"
+                "Vist the Great Wall of China",
+                "Eat street food in Vietnam"
                 
             ];
     
@@ -165,14 +201,13 @@
 
 
 
-
-
 <!-- footer -->
 
 <section class="footer">
     <h4>About Us</h4>
-    <p>More and more and more and more example text, if you don't want to put anything meanungful into a paragraph 
-    just waffle abosolute nonsense to fill the space.</p>
+    <p>At Kick The Bucket List, we are passionate about getting off the sofa and inspiring you<br>
+        to a life filled with unforgettable experiences. We inspire ourselves everyday and we<br>
+        want to help you turn your dreams into reality ... one bucket list item at a time!</p>
     <div class="icons">
         <i class="fa fa-facebook"></i>
         <i class="fa fa-twitter"></i>

@@ -20,6 +20,7 @@ def connection():
 def home():
     return render_template("home.html")
 
+
 @app.route('/signup', methods=['GET', 'POST'])
 def sign_up():
     if request.method == 'POST':
@@ -85,9 +86,21 @@ def destinations():
                             destination_url12=destination_url12, destination_url13=destination_url13,
                             destination_url14=destination_url14, destination_url15=destination_url15)
 
+
+@app.route('/', methods=['GET', 'POST'])
+def bucket_list():
+    items = []
+
+    if request.method == 'POST':
+        items = request.form.getlist('item')
+
+    return render_template('lists.html', items=items)
+
+
 @app.route('/lists')
 def lists():
     return render_template("lists.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True)
