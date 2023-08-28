@@ -24,11 +24,13 @@
                 <li><a id="destinations-link" href="/destinations">Destinations</a></li>
                 <li><a id="activities-link" href="/activities">Activities</a></li>
                 <li><a id="signinup-link" href="/signup">Sign in/Sign up</a></li>
+                <li><a id="contact-link" href="/contact">Contact</a></li>
             </ul>
         </div>
         <i class="fa fa-bars" onclick="showMenu()"></i>
     </nav>
     <h1>Destinations</h1>
+    <br>
     <p>
         Unlock the world, one destination at a time. Welcome to our Destination Discovery, where the extraordinary <br>
         becomes accessible and the unknown transforms into the unforgettable. Each corner of our planet holds <br>
@@ -39,13 +41,13 @@
         <br>
         <br>
         <br>
-    <a href="#" class="hero-btn">EXPLORE NOW</a>
+    <a id="scrollButton" class="hero-btn">EXPLORE NOW</a>
   
 </section>
 
 <!-- Achievements -->
 
-<section class="facilities">
+<section id="nextSection" class="facilities">
     <h1>Discover your dream destinations!</h1>
 
 
@@ -288,5 +290,16 @@ function hideMenu(){
 
 </script>
     
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var scrollButton = document.getElementById("scrollButton");
+        var nextSection = document.getElementById("nextSection");
+
+        scrollButton.addEventListener("click", function() {
+            nextSection.scrollIntoView({ behavior: "smooth" });
+        });
+    });
+</script>
+
 </body>
 </html>

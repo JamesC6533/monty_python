@@ -24,11 +24,13 @@
                 <li><a id="destinations-link" href="/destinations">Destinations</a></li>
                 <li><a id="activities-link" href="/activities">Activities</a></li>
                 <li><a id="signinup-link" href="/signup">Sign in/Sign up</a></li>
+                <li><a id="contact-link" href="/contact">Contact</a></li>
             </ul>
         </div>
         <i class="fa fa-bars" onclick="showMenu()"></i>
     </nav>
     <h1>Lists & Inspiration</h1>
+    <br>
     <p>
         Forge your bucket list, a path from dreams to reality. Dive into curated inspiration, where <br>
         ordinary sparks the extraordinary. Find adventures, serenity, and cultural gems. Unleash<br>
@@ -39,15 +41,16 @@
         <br>
         <br>
         <br>
-    <a href="#" class="hero-btn">EXPLORE NOW</a>
+    <a id="scrollButton" class="hero-btn">EXPLORE NOW</a>
   
 </section>
 
 <!-- lists section -->
-<section class="course">
+<section id="nextSection" class="course">
     <h1>Create and customise bucket lists </h1>
-    <p>Within this platform, you're empowered to craft your very own lists.
-       Should you find yourself seeking inspiration, consider giving our Random Bucket Spinner
+    <br>
+    <p>Within this platform, after sign up, you're empowered to craft your very own Bucket lists.
+       Should you find yourself seeking inspiration,<br> consider giving our Random Bucket Spinner
         a whirl it's designed to spark your creativity and infuse your lists with fresh ideas. </p>
 
     <div class="row">
@@ -77,38 +80,6 @@
     </div>
 
 </section>
-
-<section class="bucket-l">
-
-
-    <body>
-        <h1>My Bucket List</h1>
-        <div class="spinner3">
-            <form method="POST">
-                <ul class="bucketList3">
-                    {% for item in items %}
-                        <li class="list-item3"><input type="text" name="item" value="{{ item }}" readonly></li>
-                    {% endfor %}
-                    <li class="list-item3"><input type="text" name="new_item" placeholder="Add a new item"></li>
-                </ul>
-                <input id="spinButton3" type="submit" value="Submit">
-            </form>
-    
-            <div class="result-container3">
-                <ul class="bucketList3">
-                    {% for item in items %}
-                        <li class="list-item3">{{ item }}</li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>
-    </body>
-
-</section>
-<br>
-<br>
-<br>
-<br>
 
 <!-- list page contents -->
 
@@ -197,6 +168,35 @@
     </html>
 </section>
 
+<!--  -->
+<section class="bucket-l">
+
+
+    <body>
+        <h1>My Bucket List</h1>
+        <div class="spinner3">
+            <form method="POST">
+                <ul class="bucketList3">
+                    {% for item in items %}
+                        <li class="list-item3"><input type="text" name="item" value="{{ item }}" readonly></li>
+                    {% endfor %}
+                    <li class="list-item3"><input type="text" name="new_item" placeholder="Add a new item"></li>
+                </ul>
+                <input id="spinButton3" type="submit" value="Submit">
+            </form>
+    
+            <div class="result-container3">
+                <ul class="bucketList3">
+                    {% for item in items %}
+                        <li class="list-item3">{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </body>
+
+</section>
+
 
 
 
@@ -232,6 +232,16 @@ function hideMenu(){
     navLinks.style.right = "-200px";
 }   
 
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var scrollButton = document.getElementById("scrollButton");
+        var nextSection = document.getElementById("nextSection");
+
+        scrollButton.addEventListener("click", function() {
+            nextSection.scrollIntoView({ behavior: "smooth" });
+        });
+    });
 </script>
     
 </body>

@@ -548,7 +548,7 @@ h3 {
 }
 
 #signup input[type="submit"] {
-  background-color: #007bff;
+  background-color: #95d5c6;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -557,14 +557,61 @@ h3 {
 }
 
 #signup input[type="submit"]:hover {
-  background-color: #0056b3;
+  background-color: #95d5c6;
 }
 
 #signup h2 {
   margin-bottom: 20px;
 }
 
-/* bucket list entry */
+/* styles.css */
+
+.containerb {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  background-color: #f7f7f7;
+  text-align: center; /* Center content horizontally */
+}
+
+.containerb h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 6px;
+  text-align: left; /* Align label text to the left */
+}
+
+form input[type="email"],
+form input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+form button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #95d5c6;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+form button[type="submit"]:hover {
+  background-color: #95d5c6;
+}
 
 /* static/style.css */
 
@@ -703,4 +750,26 @@ h1 {
   border: 1px solid #95d5c6;
   background-color: #95d5c6;
   transition: 1s;
+}
+
+/* Enable smooth scrolling for all anchors */
+html {
+  scroll-behavior: smooth;
+}
+
+/* contact us  */
+
+.sub-header5 {
+  height: 100vh;
+  width: 100%;
+  background-image: linear-gradient(rgba(4, 9, 30, 0.2), rgba(4, 9, 30, 0.2)),
+    url("images/scilybanner.jpeg");
+  background-position: center;
+  background-size: cover;
+  text-align: center;
+  color: #120962;
+}
+
+.sub-header h1 {
+  margin-top: 50px;
 }

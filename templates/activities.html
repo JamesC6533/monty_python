@@ -24,11 +24,13 @@
                 <li><a id="destinations-link" href="/destinations">Destinations</a></li>
                 <li><a id="activities-link" href="/activities">Activities</a></li>
                 <li><a id="signinup-link" href="/signup">Sign in/Sign up</a></li>
+                <li><a id="contact-link" href="/contact">Contact</a></li>
             </ul>
         </div>
         <i class="fa fa-bars" onclick="showMenu()"></i>
     </nav>
     <h1>Activities</h1>
+    <br>
     <p>  Welcome to our Activities Wonderland, where ordinary moments become exhilarating adventures and unfulfilled<br>
          dreams find life. Experience adrenaline rushes, soul-soothing escapades, and cultural immersion in a tapestry<br>
          of inspiring experiences. Unleash passions, broaden horizons, and weave your extraordinary life tapestry.
@@ -38,13 +40,13 @@
         <br>
         <br>
         <br>
-    <a href="#" class="hero-btn">EXPLORE NOW</a>
+    <a id="scrollButton" class="hero-btn">EXPLORE NOW</a>
   
 </section>
 
 <!-- activities -->
 
-<section class="facilities">
+<section id="nextSection" class="facilities">
     <h1>Adventures all around!</h1>
 
     <div class="row">
@@ -200,7 +202,7 @@
             <img src="static/images/skiiii.jpeg">
             </a>
             <h3>Skiing and Snowboarding destinations</h3>
-            <p> embrace the thrill of skiing or snowboarding in
+            <p> Embrace the thrill of skiing or snowboarding in
                 landscapes transformed by the magic of winter.
  
             </p>
@@ -261,5 +263,17 @@ function hideMenu(){
 
 </script>
     
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var scrollButton = document.getElementById("scrollButton");
+        var nextSection = document.getElementById("nextSection");
+
+        scrollButton.addEventListener("click", function() {
+            nextSection.scrollIntoView({ behavior: "smooth" });
+        });
+    });
+</script>
+
+
 </body>
 </html>

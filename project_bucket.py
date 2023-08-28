@@ -4,6 +4,7 @@ import pymysql
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'random-nonsense'
 
+items = []
 
 def connection():
     server = 'localhost'
@@ -100,6 +101,13 @@ def bucket_list():
 @app.route('/lists')
 def lists():
     return render_template("lists.html")
+
+
+@app.route('/contact')
+def contact():
+    return render_template("contact.html")
+            
+           
 
 
 if __name__ == "__main__":
