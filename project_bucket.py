@@ -1,11 +1,9 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, session, redirect, url_for, request 
 import pymysql
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'random-nonsense'
 
-items = []
-users = []
 
 def connection():
     server = 'localhost'
@@ -31,6 +29,9 @@ def sign_up():
         email = request.form["email"]
 
         conn = connection()
+        query = conn.cursor()
+        query.execute("INSERT INTO customers(username, password, email) VALUES ('"+username+"','"+password+"', '"+email+"') " )
+        
         conn.close()
 
     return render_template("signup.html")
@@ -89,24 +90,22 @@ def destinations():
                             destination_url14=destination_url14, destination_url15=destination_url15)
 
 
-@app.route('/', methods=['GET', 'POST'])
-def index():
+@app.route('/lists', methods=['GET', 'POST'])
+def bucketlist():
     if request.method == 'POST':
+        conn = connection()
+        query = conn.cursor()
         items = []
-        for i in range(1, 16):
+    
+        for i in range(1, 11):
             item = request.form.get(f'item{i}')
+            query.execute("INSERT INTO bucketlistentries(activity) VALUES ('"+item+"') " )
             if item:
                 items.append(item)
         
-        return render_template('list.html', items=items)
+        return render_template('lists.html', items=items)
     
-    return render_template('list.html')
-
-
-
-@app.route('/lists')
-def lists():
-    return render_template("lists.html")
+    return render_template('lists.html')
 
 
 @app.route('/contact')
@@ -120,12 +119,51 @@ def signin():
     email = request.form.get('email')
     password = request.form.get('password')
 
-    user = next((user for user in users if user['email'] == email), None)
-    if user and user['password'] == password:
-        return "Sign in successful!"
-    else:
-        return "Invalid email or password."
-           
+    conn = connection()
+    query = conn.cursor()
+    query.execute("SELECT * FROM customers WHERE email = '"+email+"' and password = '"+password+"'")
+    row = query.fetchall()
+    if len(row) > 0:
+        conn.close()
 
+
+    return render_template("signup.html")
+
+
+
+@app.route('/')
+def index():
+
+   if 'username' in session:
+      username = session['username']
+      return 'Logged in as ' + username + '<br>' + \
+         "<b><a href = '/logout'>click here to log out</a></b>"
+   return "You are not logged in <br><a href = '/login'></b>" + \
+      "click here to log in</b></a>"
+
+
+@app.route('/login', methods = ['GET', 'POST'])
+def login():
+   if request.method == 'POST':
+      session['username'] = request.form['username']
+      return redirect(url_for('index'))
+   return '''
+	
+   <form action = "" method = "post">
+      <p><input type = text name = username/></p>
+      <p<<input type = submit value = Login/></p>
+   </form>
+	
+   '''
+
+@app.route('/logout')
+def logout():
+    session.pop('username', None)
+    return redirect(url_for('index'))
+
+
+        
+    
+           
 if __name__ == "__main__":
     app.run(debug=True)

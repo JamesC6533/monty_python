@@ -177,14 +177,12 @@
     </body>
     </html>
 </section>
-
 <!--  -->
 <section>
-
     <body>
         <div class="containerL">
             <h2>My Bucket List</h2>
-            <form method="post">
+            <form method="post" action="">
                 {% for i in range(1, 11) %}
                     <label for="item{{ i }}">Item {{ i }}:</label>
                     <input type="text" id="item{{ i }}" name="item{{ i }}" required>
