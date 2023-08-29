@@ -5,6 +5,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'random-nonsense'
 
 items = []
+users = []
 
 def connection():
     server = 'localhost'
@@ -89,13 +90,18 @@ def destinations():
 
 
 @app.route('/', methods=['GET', 'POST'])
-def bucket_list():
-    items = []
-
+def index():
     if request.method == 'POST':
-        items = request.form.getlist('item')
+        items = []
+        for i in range(1, 16):
+            item = request.form.get(f'item{i}')
+            if item:
+                items.append(item)
+        
+        return render_template('list.html', items=items)
+    
+    return render_template('list.html')
 
-    return render_template('lists.html', items=items)
 
 
 @app.route('/lists')
@@ -107,8 +113,19 @@ def lists():
 def contact():
     return render_template("contact.html")
             
-           
 
+
+@app.route('/signin', methods=['POST'])
+def signin():
+    email = request.form.get('email')
+    password = request.form.get('password')
+
+    user = next((user for user in users if user['email'] == email), None)
+    if user and user['password'] == password:
+        return "Sign in successful!"
+    else:
+        return "Invalid email or password."
+           
 
 if __name__ == "__main__":
     app.run(debug=True)

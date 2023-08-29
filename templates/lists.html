@@ -23,7 +23,7 @@
                 <li><a id="lists-link" href="/lists">Lists</a></li>
                 <li><a id="destinations-link" href="/destinations">Destinations</a></li>
                 <li><a id="activities-link" href="/activities">Activities</a></li>
-                <li><a id="signinup-link" href="/signup">Sign in/Sign up</a></li>
+                <li><a id="signinup-link" href="/signup">Sign In</a></li>
                 <li><a id="contact-link" href="/contact">Contact</a></li>
             </ul>
         </div>
@@ -106,7 +106,17 @@
                 "Go on a hot air balloon ride",
                 "Scuba dive at the Great Barrior Reef ",
                 "Vist the Great Wall of China",
-                "Eat street food in Vietnam"
+                "Eat street food in Vietnam",
+                "Play Golf a Pebble Beach",
+                "Go to Mexico for the Festival of the dead",
+                "Go bunjee jumping in New Zealand",
+                "Zip-line down the Free Mount Street in Las Vegas", 
+                "Road trip down Route 66",
+                "See the Northern Lights",
+                "Explore the Amazon in Brazil",
+                "Go white water rafting",
+                "Learn how to play an instrument",
+                "Visit the ancient ruins of Pompeii Italy"
                 
             ];
     
@@ -169,36 +179,31 @@
 </section>
 
 <!--  -->
-<section class="bucket-l">
-
+<section>
 
     <body>
-        <h1>My Bucket List</h1>
-        <div class="spinner3">
-            <form method="POST">
-                <ul class="bucketList3">
-                    {% for item in items %}
-                        <li class="list-item3"><input type="text" name="item" value="{{ item }}" readonly></li>
-                    {% endfor %}
-                    <li class="list-item3"><input type="text" name="new_item" placeholder="Add a new item"></li>
-                </ul>
-                <input id="spinButton3" type="submit" value="Submit">
+        <div class="containerL">
+            <h2>My Bucket List</h2>
+            <form method="post">
+                {% for i in range(1, 11) %}
+                    <label for="item{{ i }}">Item {{ i }}:</label>
+                    <input type="text" id="item{{ i }}" name="item{{ i }}" required>
+                {% endfor %}
+                <button type="submit">Add Items</button>
             </form>
-    
-            <div class="result-container3">
-                <ul class="bucketList3">
-                    {% for item in items %}
-                        <li class="list-item3">{{ item }}</li>
-                    {% endfor %}
-                </ul>
+            <div id="itemList">
+                {% if items %}
+                    <h3>Your Items:</h3>
+                    <ul id="items">
+                        {% for item in items %}
+                            <li>{{ item }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
             </div>
         </div>
     </body>
-
 </section>
-
-
-
 
 
 <!-- footer -->
