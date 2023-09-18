@@ -1,6 +1,6 @@
 from flask import Flask, render_template, session, redirect, url_for, request 
 import pymysql
-
+from flask_bcrypt import Bcrypt
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'random-nonsense'
 
@@ -14,13 +14,34 @@ def connection():
     conn.autocommit(True)
     return conn
 
-
-@app.route('/')
+# home page 
 @app.route('/home')
 def home():
-    return render_template("home.html")
+    return render_template("home.html", login=url_for('login'), Acount= 'Sign up')
 
+# user page 
 
+@app.route('/users')
+def users():
+
+    if 'username' in session and session['logged_in']:
+
+        username = session['username']
+
+        conn = connection()
+
+        cursor = conn.cursor()
+
+        cursor.execute('SELECT * FROM customers WHERE email = %s', (username))
+
+        customers = cursor.fetchone()
+
+        if customers:
+            return render_template('users.html', customers=customers)
+
+    return render_template('users.html', login=url_for('login'), Acount= 'My Acount')
+
+# sign up page
 @app.route('/signup', methods=['GET', 'POST'])
 def sign_up():
     if request.method == 'POST':
@@ -30,12 +51,20 @@ def sign_up():
 
         conn = connection()
         query = conn.cursor()
-        query.execute("INSERT INTO customers(username, password, email) VALUES ('"+username+"','"+password+"', '"+email+"') " )
-        
+
+        # Hash the password
+        bcrypt = Bcrypt(app)
+        hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
+
+        # Use parameterized query to avoid SQL injection
+        query.execute("INSERT INTO customers(username, password, email) VALUES (%s, %s, %s)",
+                      (username, hashed_password, email))
+
         conn.close()
 
-    return render_template("signup.html")
+    return render_template("signup.html", login=url_for('login'), Acount='Sign up')
 
+# activities page/hyperlinks
 @app.route('/activities')
 def activities():
     activities_url = "https://www.rivieratravel.co.uk/blog/7-wonders-the-world-explore"
@@ -62,6 +91,7 @@ def activities():
                             activities_url12=activities_url12, activities_url13=activities_url13,
                             activities_url14=activities_url14, activities_url15=activities_url15,)
 
+# destinations page/hyperlinks 
 @app.route('/destinations')
 def destinations():
     destination_url = "https://www.theblondeabroad.com/ultimate-venice-travel-guide/"
@@ -89,7 +119,7 @@ def destinations():
                             destination_url12=destination_url12, destination_url13=destination_url13,
                             destination_url14=destination_url14, destination_url15=destination_url15)
 
-
+# lists page/bucketspinner and customer lists
 @app.route('/lists', methods=['GET', 'POST'])
 def bucketlist():
     if request.method == 'POST':
@@ -107,59 +137,62 @@ def bucketlist():
     
     return render_template('lists.html')
 
-
+# contact page/mailing list 
 @app.route('/contact')
 def contact():
     return render_template("contact.html")
             
 
-
-@app.route('/signin', methods=['POST'])
+# sign up page/ sign in function 
+@app.route('/signin', methods=['GET','POST'])
 def signin():
     email = request.form.get('email')
     password = request.form.get('password')
+    customerid = request.form.get('customerid')
+    conn = connection()
+    cursor=conn.cursor()
+    cursor.execute('SELECT * FROM customers WHERE email = %s', (email))
+    customers = cursor.fetchone()
+
+    # Hash the password
+    bcrypt = Bcrypt(app)
+    hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
 
     conn = connection()
     query = conn.cursor()
-    query.execute("SELECT * FROM customers WHERE email = '"+email+"' and password = '"+password+"'")
+
+    # Use parameterized query to avoid SQL injection
+    query.execute("SELECT * FROM customers WHERE email = %s", (email))
     row = query.fetchall()
+
     if len(row) > 0:
+        # Insert hashed password into signin table
+        query.execute("INSERT INTO signin(password, email, customerid) VALUES (%s, %s, %s)", (hashed_password, email, customerid))
+        conn.commit()  # Commit the changes
         conn.close()
 
+        if customers:
+            password = customers[3]
+            session['logged_in'] = True
+            session['username'] = email
+            return render_template("home.html", login=url_for('users'), Acount='My Acount', Welcome='username' )
+    
 
-    return render_template("signup.html")
 
-
-
-@app.route('/')
-def index():
-
-   if 'username' in session:
-      username = session['username']
-      return 'Logged in as ' + username + '<br>' + \
-         "<b><a href = '/logout'>click here to log out</a></b>"
-   return "You are not logged in <br><a href = '/login'></b>" + \
-      "click here to log in</b></a>"
+    return render_template("signup.html", login=url_for('sign_up'), Acount='Sign In' )
 
 
 @app.route('/login', methods = ['GET', 'POST'])
 def login():
    if request.method == 'POST':
       session['username'] = request.form['username']
-      return redirect(url_for('index'))
-   return '''
-	
-   <form action = "" method = "post">
-      <p><input type = text name = username/></p>
-      <p<<input type = submit value = Login/></p>
-   </form>
-	
-   '''
+      return render_template("home.html",login=url_for('users'), Acount='myaccount')
+   return render_template("signup.html",login=url_for('sign_up'), Acount='Sign up')
 
 @app.route('/logout')
 def logout():
     session.pop('username', None)
-    return redirect(url_for('index'))
+    return render_template("home.html",login=url_for('home'), Acount='Home')
 
 
         

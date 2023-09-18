@@ -13,7 +13,7 @@
 <script src="https://kit.fontawesome.com/c622fb64c3.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<section class="sub-header5">
+<section class="sub-header6">
     <nav>
         <a href="home.html"><img src="static/images/logo-PhotoRoom.png"> </a>
         <div class="nav-links" id="navLinks">
@@ -23,73 +23,49 @@
                 <li><a id="lists-link" href="/lists">Lists</a></li>
                 <li><a id="destinations-link" href="/destinations">Destinations</a></li>
                 <li><a id="activities-link" href="/activities">Activities</a></li>
-                <li><a id="signinup-link" href="/signup">Sign In</a></li>
+                <li><a id="signinup-link" href={{login}}>{{Acount}}</a></li>
                 <li><a id="contact-link" href="/contact">Contact</a></li>
             </ul>
         </div>
         <i class="fa fa-bars" onclick="showMenu()"></i>
     </nav>
-    <h1>Contact us!</h1>
-    <br>
-    
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-
-    <a id="scrollButton" class="hero-btn">EXPLORE NOW</a>
-
-  </section>
-
-  <section id="nextSection" class="course">
-    <h1>Contact us!</h1>
+    <h1>Accounts</h1>
     <br>
     <p>
-     </p>
 
-    <div class="row">
-        <div class="course-col">
-            <h3>Phone</h3>
-            <p>01717654321 
-            </p>
+    </p>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    <a id="scrollButton" class="hero-btn">EXPLORE NOW</a>
 
-        </div>
-        <div class="course-col">
-            <h3>Email</h3>
-            <p>info@kickthebucket.com
-            </p>
-
-        </div>
-        <div class="course-col">
-            <h3>Socials</h3>
-            <p class="icons2">
-                <i class="fa fa-facebook"></i>
-                <i class="fa fa-instagram"></i>
-                <i class="fa fa-twitter"></i>
-                <i class="fa fa-linkedin"></i>
-            </p>
-
-        </div>
-    </div>
-</section>
-
-<section>
-<body>
-    <div class="center-screen">
-        <div class="mailing-list-box">
-            <h2>Subscribe to Our Mailing List</h2>
-            <form action="#" method="post">
-                <input type="email" name="email" id="email" placeholder="Your email" required>
-                <a href="#" class="hero-btn2">Subscribe</a>
-            </form>
-        </div>
-    </div>
 </body>
 </section>
+  
+<section>
+
+<div class="bucket-l2">
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/background.js')}}"></script>
+    <h1>User Information</h1>
+
+    <p><strong>Username:</strong> {{ customers[1] }}</p>
+
+    <p><strong>Email:</strong> {{ customers[2] }}</p>
+
+    <p><strong>Hashed-Password</strong> {{ customers[3] }}</p>
+
+
+    <!-- <p><a href="{{url_for('logout')}}">logout</a></p> -->
+
+    <a href="{{url_for('logout')}}"><button type="submit" name="submit" method="POST">Sign Out</button></a>
+
+</div>
+
+</section>
+
 
 <!-- footer -->
 
@@ -108,6 +84,8 @@
 </section>
 
 
+<section>
+
 <!-- JavaScript for Toggle Menu -->
 <script>
 
@@ -121,7 +99,6 @@ function hideMenu(){
 }   
 
 </script>
-    
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         var scrollButton = document.getElementById("scrollButton");
@@ -132,5 +109,6 @@ function hideMenu(){
         });
     });
 </script>
+    
 </body>
 </html>

@@ -576,7 +576,7 @@ h3 {
   max-width: 400px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #fff;
+  background-color: #95d5c6;
   border-radius: 5px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
@@ -684,7 +684,7 @@ ul#items li {
 }
 
 /* Enable smooth scrolling for all anchors */
-html {
+.html {
   scroll-behavior: smooth;
 }
 
@@ -701,8 +701,9 @@ html {
   color: #120962;
 }
 
-.sub-header h1 {
+.sub-header5 h1 {
   margin-top: 50px;
+  color: #120962;
 }
 
 .icons2 .fa {
@@ -747,4 +748,86 @@ html {
   .cta h1 {
     font-size: 20px;
   }
+}
+
+/* mailing list button */
+
+/* Your existing styles for .hero-btn */
+
+/* Reset default margin and padding */
+/* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+} */
+
+.center-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #fff;
+}
+
+.mailing-list-box {
+  text-align: center;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input[type="email"] {
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #120962;
+  border-radius: 3px;
+  font-size: 14px;
+}
+
+.hero-btn2 {
+  display: inline-block;
+  text-decoration: none;
+  color: #120962;
+  border: 1px solid #fff;
+  padding: 12px 24px; /* Adjust button padding */
+  font-size: 15px;
+  background: transparent;
+  position: relative;
+  cursor: pointer;
+}
+.hero-btn2:hover {
+  border: 1px solid #120962;
+  background: #95d5c6;
+  transition: 1s;
+  text-align: center;
+}
+/* Rest of the styles remain the same */
+
+/* users page  */
+
+.sub-header6 {
+  height: 100vh;
+  width: 100%;
+  background-image: linear-gradient(rgba(4, 9, 30, 0.2), rgba(4, 9, 30, 0.2)),
+    url("images/scilybanner.jpeg");
+  background-position: center;
+  background-size: cover;
+  text-align: center;
+  color: #120962;
+}
+
+.sub-header6 h1 {
+  margin-top: 50px;
+  color: #120962;
 }
