@@ -23,7 +23,11 @@
                 <li><a id="lists-link" href="/lists">Lists</a></li>
                 <li><a id="destinations-link" href="/destinations">Destinations</a></li>
                 <li><a id="activities-link" href="/activities">Activities</a></li>
+                {% if 'loged_in' in session %} 
+                <li><a id="signinup-link" href={{users}}>{{session['username']}}</a></li>
+                {% else %}
                 <li><a id="signinup-link" href={{login}}>{{Acount}}</a></li>
+                {% endif %}
                 <li><a id="contact-link" href="/contact">Contact</a></li>
             </ul>
         </div>

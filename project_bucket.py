@@ -15,9 +15,13 @@ def connection():
     return conn
 
 # home page 
-@app.route('/home')
+@app.route('/')
 def home():
-    return render_template("home.html", login=url_for('login'), Acount= 'Sign up')
+    if 'loggedin' in session and session['loggedin'] == True:
+        account_name = 'username'
+    else:
+        account_name = 'Login'
+    return render_template("home.html", login=url_for('login'), Acount= account_name)
 
 # user page 
 
@@ -185,14 +189,21 @@ def signin():
 @app.route('/login', methods = ['GET', 'POST'])
 def login():
    if request.method == 'POST':
-      session['username'] = request.form['username']
-      return render_template("home.html",login=url_for('users'), Acount='myaccount')
+      username = request.form['username']
+      password_candidate = request.form['password']
+      conn = connection()
+      cursor = conn.cursor()
+      cursor.execute('SELECT * FROM customers WHERE username = %s', (username,))
+      users = cursor.fetchone()
+      session ['logged_in'] = True 
+      session ['username'] = username
+      return render_template("home.html",login=url_for('users'), Acount='My Account')
    return render_template("signup.html",login=url_for('sign_up'), Acount='Sign up')
 
 @app.route('/logout')
 def logout():
     session.pop('username', None)
-    return render_template("home.html",login=url_for('home'), Acount='Home')
+    return render_template("home.html",login=url_for('home'), Acount='Sign In')
 
 
         
